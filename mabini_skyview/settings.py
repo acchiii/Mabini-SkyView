@@ -11,7 +11,7 @@ SECRET_KEY = 'django-insecure-mabini-skyview-secret-key-change-in-production-202
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['*', '192.168.137.1']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -24,6 +24,8 @@ INSTALLED_APPS = [
     'bookings',
     'gallery',
     'packages',
+    'tailwind',
+    'theme',
 ]
 
 MIDDLEWARE = [
@@ -85,3 +87,4 @@ MEDIA_ROOT = BASE_DIR / 'media'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
+TAILWIND_APP_NAME = 'theme'
