@@ -1,0 +1,237 @@
+{% extends 'base.html' %}
+
+{% block title %}About Us — Mabini SkyView{% endblock %}
+
+{% block content %}
+
+<!-- Page Header -->
+<section class="relative pt-32 pb-20 overflow-hidden">
+  <div class="absolute inset-0">
+    <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1920&q=80" alt="Mountain view" class="w-full h-full object-cover" />
+    <div class="absolute inset-0 bg-gradient-to-b from-slate-950/80 via-slate-900/70 to-slate-950"></div>
+  </div>
+  <div class="relative z-10 text-center px-4">
+    <p class="text-teal-400 text-xs font-medium uppercase tracking-[0.25em] mb-4">Our Story</p>
+    <h1 class="font-display text-5xl md:text-6xl font-bold text-white mb-6">About Mabini SkyView</h1>
+    <p class="text-slate-300 text-lg max-w-2xl mx-auto leading-relaxed">
+      Born from a love of Cebu's mountains — built to share that love with the world.
+    </p>
+  </div>
+</section>
+
+
+<!-- Story Section -->
+<section class="py-24 bg-slate-950">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+      <!-- Images collage -->
+      <div class="relative">
+        <div class="grid grid-cols-2 gap-4">
+          <div class="img-overlay rounded-2xl overflow-hidden aspect-[3/4]">
+            <img src="https://images.unsplash.com/photo-1501854140801-50d01698950b?w=600&q=80" alt="Mountain scenery" class="w-full h-full object-cover" />
+          </div>
+          <div class="space-y-4 pt-8">
+            <div class="img-overlay rounded-2xl overflow-hidden aspect-square">
+              <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=80" alt="Sunrise view" class="w-full h-full object-cover" />
+            </div>
+            <div class="img-overlay rounded-2xl overflow-hidden aspect-square">
+              <img src="https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=400&q=80" alt="Forest trail" class="w-full h-full object-cover" />
+            </div>
+          </div>
+        </div>
+        <!-- Floating badge -->
+        <div class="absolute bottom-4 left-4 bg-teal-500 text-white px-5 py-3 rounded-xl shadow-2xl">
+          <p class="font-display font-bold text-2xl">2018</p>
+          <p class="text-xs text-teal-100">Established</p>
+        </div>
+      </div>
+
+      <!-- Text content -->
+      <div>
+        <p class="text-teal-400 text-xs font-medium uppercase tracking-[0.25em] mb-4">Who We Are</p>
+        <h2 class="font-display text-4xl font-bold text-white mb-6 leading-tight">
+          Cebu's Premier<br/>Hilltop Destination
+        </h2>
+        <div class="space-y-4 text-slate-400 leading-relaxed">
+          <p>
+            Mabini SkyView was founded in 2018 with a singular purpose: to invite people to slow down, look up, and rediscover the beauty that surrounds Cebu City. Perched atop the hills of Mabini, our destination offers an unobstructed 360-degree view of the Visayan Sea, the city lights below, and the rolling green mountains of Central Visayas.
+          </p>
+          <p>
+            What started as a family-owned picnic spot has grown into one of Cebu's most beloved tourist destinations — attracting thousands of visitors each year who come seeking fresh air, natural beauty, and a genuine escape from the urban pace.
+          </p>
+          <p>
+            We are proudly locally owned and operated, deeply committed to sustainable tourism, and passionate about showcasing the hidden natural treasures of Mabini to both local and international visitors.
+          </p>
+        </div>
+
+        <!-- Quick facts -->
+        <div class="mt-10 grid grid-cols-3 gap-4">
+          <div class="text-center p-4 rounded-xl bg-slate-900 border border-slate-800">
+            <p class="font-display font-bold text-2xl text-teal-400">6+</p>
+            <p class="text-slate-500 text-xs mt-1">Years Operating</p>
+          </div>
+          <div class="text-center p-4 rounded-xl bg-slate-900 border border-slate-800">
+            <p class="font-display font-bold text-2xl text-teal-400">10K+</p>
+            <p class="text-slate-500 text-xs mt-1">Happy Visitors</p>
+          </div>
+          <div class="text-center p-4 rounded-xl bg-slate-900 border border-slate-800">
+            <p class="font-display font-bold text-2xl text-teal-400">4.9</p>
+            <p class="text-slate-500 text-xs mt-1">Average Rating</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Vision & Mission -->
+<section class="py-24 bg-slate-900">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <p class="text-teal-400 text-xs font-medium uppercase tracking-[0.25em] mb-3">Guiding Principles</p>
+      <h2 class="font-display text-4xl md:text-5xl font-bold text-white">Our Vision & Mission</h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+      <!-- Vision -->
+      <div class="p-8 rounded-2xl bg-gradient-to-br from-teal-500/10 to-cyan-600/5 border border-teal-500/20">
+        <div class="w-14 h-14 rounded-xl bg-teal-500/20 flex items-center justify-center mb-6">
+          <i data-lucide="eye" class="w-7 h-7 text-teal-400"></i>
+        </div>
+        <h3 class="font-display font-bold text-white text-2xl mb-4">Our Vision</h3>
+        <p class="text-slate-300 leading-relaxed">
+          To be recognized as Cebu's foremost eco-tourism destination — a sanctuary where nature, culture, and community converge to create transformative experiences for every visitor, while preserving the natural heritage of Mabini for generations to come.
+        </p>
+      </div>
+
+      <!-- Mission -->
+      <div class="p-8 rounded-2xl bg-gradient-to-br from-blue-500/10 to-indigo-600/5 border border-blue-500/20">
+        <div class="w-14 h-14 rounded-xl bg-blue-500/20 flex items-center justify-center mb-6">
+          <i data-lucide="target" class="w-7 h-7 text-blue-400"></i>
+        </div>
+        <h3 class="font-display font-bold text-white text-2xl mb-4">Our Mission</h3>
+        <p class="text-slate-300 leading-relaxed">
+          To provide unforgettable, world-class tourist experiences rooted in authentic Filipino hospitality — offering breathtaking views, sustainable nature activities, and curated amenities that leave every guest feeling rested, inspired, and connected to the beauty of Cebu.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Values Section -->
+<section class="py-24 bg-slate-950">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <p class="text-teal-400 text-xs font-medium uppercase tracking-[0.25em] mb-3">What We Stand For</p>
+      <h2 class="font-display text-4xl font-bold text-white">Our Core Values</h2>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="text-center p-6">
+        <div class="w-14 h-14 rounded-full bg-green-500/15 flex items-center justify-center mx-auto mb-4">
+          <i data-lucide="leaf" class="w-7 h-7 text-green-400"></i>
+        </div>
+        <h4 class="font-display font-semibold text-white text-lg mb-2">Sustainability</h4>
+        <p class="text-slate-400 text-sm">Eco-conscious practices in every aspect of our operations.</p>
+      </div>
+      <div class="text-center p-6">
+        <div class="w-14 h-14 rounded-full bg-yellow-500/15 flex items-center justify-center mx-auto mb-4">
+          <i data-lucide="heart" class="w-7 h-7 text-yellow-400"></i>
+        </div>
+        <h4 class="font-display font-semibold text-white text-lg mb-2">Hospitality</h4>
+        <p class="text-slate-400 text-sm">Genuine Filipino warmth and care in every interaction.</p>
+      </div>
+      <div class="text-center p-6">
+        <div class="w-14 h-14 rounded-full bg-blue-500/15 flex items-center justify-center mx-auto mb-4">
+          <i data-lucide="users" class="w-7 h-7 text-blue-400"></i>
+        </div>
+        <h4 class="font-display font-semibold text-white text-lg mb-2">Community</h4>
+        <p class="text-slate-400 text-sm">Supporting local livelihoods and empowering Mabini's residents.</p>
+      </div>
+      <div class="text-center p-6">
+        <div class="w-14 h-14 rounded-full bg-purple-500/15 flex items-center justify-center mx-auto mb-4">
+          <i data-lucide="sparkles" class="w-7 h-7 text-purple-400"></i>
+        </div>
+        <h4 class="font-display font-semibold text-white text-lg mb-2">Excellence</h4>
+        <p class="text-slate-400 text-sm">Continuously elevating our standards to exceed expectations.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Location Section -->
+<section class="py-24 bg-slate-900">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div>
+        <p class="text-teal-400 text-xs font-medium uppercase tracking-[0.25em] mb-4">Find Us</p>
+        <h2 class="font-display text-4xl font-bold text-white mb-6">Our Location</h2>
+        <p class="text-slate-400 leading-relaxed mb-8">
+          Nestled in the scenic hills of Mabini, Cebu City, we're just a short drive from the city center yet worlds apart in atmosphere. The journey itself is part of the experience — winding mountain roads reveal stunning vistas at every turn.
+        </p>
+
+        <ul class="space-y-5">
+          <li class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-lg bg-teal-500/15 flex items-center justify-center flex-shrink-0">
+              <i data-lucide="map-pin" class="w-5 h-5 text-teal-400"></i>
+            </div>
+            <div>
+              <p class="text-white font-medium text-sm">Address</p>
+              <p class="text-slate-400 text-sm">Mabini, Cebu City, Cebu, Philippines 6000</p>
+            </div>
+          </li>
+          <li class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-lg bg-teal-500/15 flex items-center justify-center flex-shrink-0">
+              <i data-lucide="car" class="w-5 h-5 text-teal-400"></i>
+            </div>
+            <div>
+              <p class="text-white font-medium text-sm">Getting Here</p>
+              <p class="text-slate-400 text-sm">~30 minutes drive from Cebu City center. Habal-habal and tricycle available from Mabini junction.</p>
+            </div>
+          </li>
+          <li class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-lg bg-teal-500/15 flex items-center justify-center flex-shrink-0">
+              <i data-lucide="clock" class="w-5 h-5 text-teal-400"></i>
+            </div>
+            <div>
+              <p class="text-white font-medium text-sm">Operating Hours</p>
+              <p class="text-slate-400 text-sm">Daily: 6:00 AM – 10:00 PM (Last entry at 9:00 PM)</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Map embed -->
+      <div class="rounded-2xl overflow-hidden border border-slate-700 shadow-2xl">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d62629.04895887397!2d123.8318!3d10.3157!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33a999258cfa2c79%3A0x7aad9f4cb5a5def2!2sCebu%20City%2C%20Cebu%2C%20Philippines!5e0!3m2!1sen!2sph!4v1234567890"
+          width="100%"
+          height="380"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Mabini, Cebu City Location">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="py-16 bg-slate-950 border-t border-slate-800">
+  <div class="text-center px-4">
+    <h3 class="font-display text-3xl font-bold text-white mb-4">Ready to Visit?</h3>
+    <p class="text-slate-400 mb-8">Book your experience today and let the mountains welcome you.</p>
+    <a href="{% url 'booking' %}" class="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-teal-500 hover:bg-teal-400 text-white font-semibold transition-all duration-300 hover:-translate-y-1 shadow-xl shadow-teal-900/40">
+      <i data-lucide="calendar" class="w-4 h-4"></i>
+      Book Now
+    </a>
+  </div>
+</section>
+
+{% endblock %}

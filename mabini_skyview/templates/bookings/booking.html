@@ -1,0 +1,225 @@
+{% extends 'base.html' %}
+
+{% block title %}Book Now — Mabini SkyView{% endblock %}
+
+{% block content %}
+
+<!-- Page Header -->
+<section class="relative pt-36 pb-20 overflow-hidden">
+  <div class="absolute inset-0 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950"></div>
+  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(20,184,166,0.12),transparent_55%)]"></div>
+  <div class="relative z-10 text-center px-4">
+    <p class="text-teal-400 text-xs font-medium uppercase tracking-[0.25em] mb-4">Reserve Your Spot</p>
+    <h1 class="font-display text-5xl md:text-6xl font-bold text-white mb-6">Book Your Visit</h1>
+    <p class="text-slate-400 text-lg max-w-xl mx-auto leading-relaxed">
+      Just a few details and your adventure at Mabini SkyView is confirmed. Easy, fast, and hassle-free.
+    </p>
+  </div>
+</section>
+
+
+<!-- Booking Form Section -->
+<section class="py-20 bg-slate-950">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-5 gap-12 items-start">
+
+      <!-- Sidebar Info -->
+      <div class="lg:col-span-2 space-y-6 lg:sticky lg:top-24">
+
+        <!-- Why Book section -->
+        <div class="p-7 rounded-2xl bg-slate-900 border border-slate-800">
+          <h3 class="font-display font-bold text-white text-xl mb-5">Why Book With Us?</h3>
+          <ul class="space-y-4">
+            <li class="flex items-start gap-3">
+              <div class="w-8 h-8 rounded-lg bg-teal-500/15 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <i data-lucide="shield-check" class="w-4 h-4 text-teal-400"></i>
+              </div>
+              <div>
+                <p class="text-white text-sm font-medium">Guaranteed Slot</p>
+                <p class="text-slate-400 text-xs mt-0.5">Your booking secures a reserved spot — no walk-in surprises.</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <div class="w-8 h-8 rounded-lg bg-teal-500/15 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <i data-lucide="refresh-ccw" class="w-4 h-4 text-teal-400"></i>
+              </div>
+              <div>
+                <p class="text-white text-sm font-medium">Free Rescheduling</p>
+                <p class="text-slate-400 text-xs mt-0.5">Change your date up to 48 hours before — at no extra cost.</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <div class="w-8 h-8 rounded-lg bg-teal-500/15 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <i data-lucide="headphones" class="w-4 h-4 text-teal-400"></i>
+              </div>
+              <div>
+                <p class="text-white text-sm font-medium">24/7 Support</p>
+                <p class="text-slate-400 text-xs mt-0.5">Our team is always reachable via phone, Viber, or email.</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <div class="w-8 h-8 rounded-lg bg-teal-500/15 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <i data-lucide="baby" class="w-4 h-4 text-teal-400"></i>
+              </div>
+              <div>
+                <p class="text-white text-sm font-medium">Kids Discount</p>
+                <p class="text-slate-400 text-xs mt-0.5">Children 12 and under get special discounted rates.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Quick Contact -->
+        <div class="p-7 rounded-2xl bg-gradient-to-br from-teal-900/30 to-teal-800/10 border border-teal-500/20">
+          <h3 class="font-display font-bold text-white text-lg mb-4">Need Help Booking?</h3>
+          <p class="text-slate-400 text-sm mb-5">Speak directly with our reservations team — we're happy to assist.</p>
+          <div class="space-y-3">
+            <a href="tel:+639123456789" class="flex items-center gap-3 text-teal-400 hover:text-teal-300 text-sm transition-colors">
+              <i data-lucide="phone" class="w-4 h-4"></i>
+              +63 912 345 6789
+            </a>
+            <a href="mailto:bookings@mabiniskyview.ph" class="flex items-center gap-3 text-teal-400 hover:text-teal-300 text-sm transition-colors">
+              <i data-lucide="mail" class="w-4 h-4"></i>
+              bookings@mabiniskyview.ph
+            </a>
+          </div>
+        </div>
+
+        <!-- Opening hours reminder -->
+        <div class="p-5 rounded-xl bg-slate-900 border border-slate-800 flex items-start gap-3">
+          <i data-lucide="clock" class="w-5 h-5 text-teal-400 flex-shrink-0 mt-0.5"></i>
+          <div>
+            <p class="text-white text-sm font-medium">Open Daily</p>
+            <p class="text-slate-400 text-xs">6:00 AM – 10:00 PM · Last entry at 9:00 PM</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Booking Form -->
+      <div class="lg:col-span-3">
+        <div class="p-8 md:p-10 rounded-2xl bg-slate-900 border border-slate-800">
+          <div class="flex items-center gap-3 mb-8">
+            <div class="w-10 h-10 rounded-xl bg-teal-500/15 flex items-center justify-center">
+              <i data-lucide="calendar-check" class="w-5 h-5 text-teal-400"></i>
+            </div>
+            <div>
+              <h2 class="font-display font-bold text-white text-xl">Booking Form</h2>
+              <p class="text-slate-500 text-xs">Fill in your details below</p>
+            </div>
+          </div>
+
+          <form method="post" action="{% url 'booking' %}" class="space-y-6" novalidate>
+            {% csrf_token %}
+
+            <!-- Name & Email row -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div>
+                <label for="name" class="block text-slate-300 text-sm font-medium mb-2">
+                  Full Name <span class="text-red-400">*</span>
+                </label>
+                <input type="text" id="name" name="name" required
+                       placeholder="Juan dela Cruz"
+                       class="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-teal-500 focus:ring-1 focus:ring-teal-500/50 transition-colors" />
+              </div>
+              <div>
+                <label for="email" class="block text-slate-300 text-sm font-medium mb-2">
+                  Email Address <span class="text-red-400">*</span>
+                </label>
+                <input type="email" id="email" name="email" required
+                       placeholder="you@email.com"
+                       class="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-teal-500 focus:ring-1 focus:ring-teal-500/50 transition-colors" />
+              </div>
+            </div>
+
+            <!-- Date & Guests row -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div>
+                <label for="date" class="block text-slate-300 text-sm font-medium mb-2">
+                  Visit Date <span class="text-red-400">*</span>
+                </label>
+                <input type="date" id="date" name="date" required min="{{ min_date }}"
+                       class="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white text-sm focus:outline-none focus:border-teal-500 focus:ring-1 focus:ring-teal-500/50 transition-colors [color-scheme:dark]" />
+              </div>
+              <div>
+                <label for="guests" class="block text-slate-300 text-sm font-medium mb-2">
+                  Number of Guests <span class="text-red-400">*</span>
+                </label>
+                <input type="number" id="guests" name="guests" required min="1" max="100"
+                       placeholder="e.g. 4"
+                       class="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-teal-500 focus:ring-1 focus:ring-teal-500/50 transition-colors" />
+              </div>
+            </div>
+
+            <!-- Package Selection -->
+            <div>
+              <label for="package" class="block text-slate-300 text-sm font-medium mb-2">Package</label>
+              <select id="package" name="package"
+                      class="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white text-sm focus:outline-none focus:border-teal-500 focus:ring-1 focus:ring-teal-500/50 transition-colors">
+                <option value="">-- Select a package (optional) --</option>
+                {% if packages %}
+                  {% for pkg in packages %}
+                  <option value="{{ pkg.name }}" {% if request.GET.package == pkg.name %}selected{% endif %}>
+                    {{ pkg.name }} — ₱{{ pkg.price }}
+                  </option>
+                  {% endfor %}
+                {% else %}
+                <option value="Day Tripper">Day Tripper — ₱350</option>
+                <option value="SkyView Explorer">SkyView Explorer — ₱650</option>
+                <option value="Summit Celebration">Summit Celebration — ₱1,200</option>
+                {% endif %}
+              </select>
+            </div>
+
+            <!-- Special Requests -->
+            <div>
+              <label for="special_requests" class="block text-slate-300 text-sm font-medium mb-2">Special Requests <span class="text-slate-500 font-normal">(optional)</span></label>
+              <textarea id="special_requests" name="special_requests" rows="4"
+                        placeholder="Any dietary requirements, accessibility needs, or special arrangements..."
+                        class="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-teal-500 focus:ring-1 focus:ring-teal-500/50 transition-colors resize-none"></textarea>
+            </div>
+
+            <!-- Divider -->
+            <div class="border-t border-slate-800 pt-4">
+              <div class="flex items-start gap-3 mb-6">
+                <input type="checkbox" id="agree" required class="mt-1 w-4 h-4 accent-teal-500 flex-shrink-0" />
+                <label for="agree" class="text-slate-400 text-xs leading-relaxed">
+                  I agree to the <a href="#" class="text-teal-400 hover:underline">Terms & Conditions</a> and understand that bookings are subject to availability and weather conditions.
+                </label>
+              </div>
+
+              <button type="submit"
+                      class="w-full py-4 rounded-xl bg-teal-500 hover:bg-teal-400 text-white font-semibold text-base transition-all duration-300 flex items-center justify-center gap-2 hover:-translate-y-0.5 shadow-2xl shadow-teal-900/50 hover:shadow-teal-500/30">
+                <i data-lucide="check-circle" class="w-5 h-5"></i>
+                Confirm Booking
+              </button>
+
+              <p class="text-center text-slate-500 text-xs mt-4">
+                Our team will confirm your booking via email within 1–2 business hours.
+              </p>
+            </div>
+
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+  lucide.createIcons();
+
+  // Pre-fill package from URL param
+  const urlParams = new URLSearchParams(window.location.search);
+  const pkg = urlParams.get('package');
+  if (pkg) {
+    const select = document.getElementById('package');
+    for (const opt of select.options) {
+      if (opt.value === pkg) { opt.selected = true; break; }
+    }
+  }
+</script>
+{% endblock %}

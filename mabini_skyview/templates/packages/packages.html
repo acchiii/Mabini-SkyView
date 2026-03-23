@@ -1,0 +1,266 @@
+{% extends 'base.html' %}
+
+{% block title %}Packages — Mabini SkyView{% endblock %}
+
+{% block content %}
+
+<!-- Page Header -->
+<section class="relative pt-36 pb-20 overflow-hidden">
+  <div class="absolute inset-0 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950"></div>
+  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(20,184,166,0.12),transparent_55%)]"></div>
+  <div class="relative z-10 text-center px-4">
+    <p class="text-teal-400 text-xs font-medium uppercase tracking-[0.25em] mb-4">Tailored Experiences</p>
+    <h1 class="font-display text-5xl md:text-6xl font-bold text-white mb-6">Our Packages</h1>
+    <p class="text-slate-400 text-lg max-w-2xl mx-auto leading-relaxed">
+      Whether you're visiting for a few hours or planning a grand event, we have the perfect package for you.
+    </p>
+  </div>
+</section>
+
+
+<!-- Packages Grid -->
+<section class="py-20 bg-slate-950">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    {% if packages %}
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {% for pkg in packages %}
+      <div class="card-lift relative flex flex-col rounded-2xl bg-slate-900 border border-slate-800 overflow-hidden
+          {% if pkg.is_featured %}ring-2 ring-teal-500/60{% endif %}">
+
+        {% if pkg.is_featured %}
+        <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-teal-500 to-cyan-400"></div>
+        <div class="absolute top-4 right-4 px-3 py-1 bg-teal-500 rounded-full text-xs font-semibold text-white">
+          ⭐ Featured
+        </div>
+        {% endif %}
+
+        <!-- Card top accent -->
+        <div class="h-2 bg-gradient-to-r from-slate-800 to-slate-700 {% if forloop.counter == 1 %}from-teal-900 to-teal-800{% elif forloop.counter == 2 %}from-blue-900 to-blue-800{% elif forloop.counter == 3 %}from-purple-900 to-purple-800{% endif %}"></div>
+
+        <div class="p-8 flex flex-col flex-1">
+          <!-- Package name -->
+          <h3 class="font-display font-bold text-white text-2xl mb-1">{{ pkg.name }}</h3>
+
+          <!-- Price -->
+          <div class="flex items-baseline gap-1 mb-4">
+            <span class="text-4xl font-bold text-teal-400">₱{{ pkg.price }}</span>
+            <span class="text-slate-500 text-sm">/ person</span>
+          </div>
+
+          <!-- Description -->
+          <p class="text-slate-400 text-sm leading-relaxed mb-6">{{ pkg.description }}</p>
+
+          <!-- Inclusions -->
+          {% if pkg.get_inclusions_list %}
+          <ul class="space-y-2 mb-8 flex-1">
+            {% for inclusion in pkg.get_inclusions_list %}
+            <li class="flex items-start gap-2.5 text-sm text-slate-300">
+              <i data-lucide="check-circle" class="w-4 h-4 text-teal-400 flex-shrink-0 mt-0.5"></i>
+              {{ inclusion }}
+            </li>
+            {% endfor %}
+          </ul>
+          {% else %}
+          <div class="flex-1"></div>
+          {% endif %}
+
+          <!-- Max guests info -->
+          <div class="flex items-center gap-2 py-3 border-t border-slate-800 mb-6">
+            <i data-lucide="users" class="w-4 h-4 text-slate-500"></i>
+            <span class="text-slate-500 text-xs">Up to {{ pkg.max_guests }} guests</span>
+          </div>
+
+          <!-- CTA -->
+          <a href="{% url 'booking' %}?package={{ pkg.name|urlencode }}"
+             class="block w-full text-center py-3.5 rounded-xl font-semibold text-sm transition-all duration-300
+             {% if pkg.is_featured %}bg-teal-500 hover:bg-teal-400 text-white shadow-lg shadow-teal-900/40{% else %}bg-teal-500/10 hover:bg-teal-500 text-teal-400 hover:text-white border border-teal-500/30 hover:border-teal-500{% endif %}">
+            Book This Package
+          </a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    {% else %}
+    <!-- Default packages when DB is empty -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+      <!-- Day Tripper -->
+      <div class="card-lift flex flex-col rounded-2xl bg-slate-900 border border-slate-800 overflow-hidden">
+        <div class="h-1.5 bg-gradient-to-r from-green-600 to-teal-500"></div>
+        <div class="p-8 flex flex-col flex-1">
+          <h3 class="font-display font-bold text-white text-2xl mb-1">Day Tripper</h3>
+          <div class="flex items-baseline gap-1 mb-4">
+            <span class="text-4xl font-bold text-teal-400">₱350</span>
+            <span class="text-slate-500 text-sm">/ person</span>
+          </div>
+          <p class="text-slate-400 text-sm leading-relaxed mb-6">Ideal for a solo visit or a quick escape. Covers entrance, trail access, and the main viewpoint deck — perfect for spontaneous adventurers.</p>
+          <ul class="space-y-2 mb-8 flex-1">
+            {% for item in "1234"|make_list %}
+            <li class="flex items-center gap-2.5 text-sm text-slate-300">
+              <i data-lucide="check-circle" class="w-4 h-4 text-teal-400 flex-shrink-0"></i>
+              {% if forloop.counter == 1 %}Entrance fee & trail pass
+              {% elif forloop.counter == 2 %}Viewpoint deck access
+              {% elif forloop.counter == 3 %}Welcome refreshment
+              {% else %}Free parking{% endif %}
+            </li>
+            {% endfor %}
+          </ul>
+          <div class="flex items-center gap-2 py-3 border-t border-slate-800 mb-6">
+            <i data-lucide="users" class="w-4 h-4 text-slate-500"></i>
+            <span class="text-slate-500 text-xs">Solo or small group</span>
+          </div>
+          <a href="{% url 'booking' %}" class="block w-full text-center py-3.5 rounded-xl bg-teal-500/10 hover:bg-teal-500 text-teal-400 hover:text-white border border-teal-500/30 hover:border-teal-500 font-semibold text-sm transition-all duration-300">
+            Book Day Tripper
+          </a>
+        </div>
+      </div>
+
+      <!-- SkyView Explorer — Featured -->
+      <div class="card-lift relative flex flex-col rounded-2xl bg-slate-900 border border-slate-800 overflow-hidden ring-2 ring-teal-500/60">
+        <div class="h-1.5 bg-gradient-to-r from-teal-500 to-cyan-400"></div>
+        <div class="absolute top-4 right-4 px-3 py-1 bg-teal-500 rounded-full text-xs font-semibold text-white">⭐ Most Popular</div>
+        <div class="p-8 flex flex-col flex-1">
+          <h3 class="font-display font-bold text-white text-2xl mb-1">SkyView Explorer</h3>
+          <div class="flex items-baseline gap-1 mb-4">
+            <span class="text-4xl font-bold text-teal-400">₱650</span>
+            <span class="text-slate-500 text-sm">/ person</span>
+          </div>
+          <p class="text-slate-400 text-sm leading-relaxed mb-6">Our bestselling full-day package combining guided trail hiking, a Filipino lunch with a view, and an evening bonfire session under the stars.</p>
+          <ul class="space-y-2 mb-8 flex-1">
+            {% for item in "123456"|make_list %}
+            <li class="flex items-center gap-2.5 text-sm text-slate-300">
+              <i data-lucide="check-circle" class="w-4 h-4 text-teal-400 flex-shrink-0"></i>
+              {% if forloop.counter == 1 %}Full-day entrance & trail access
+              {% elif forloop.counter == 2 %}Guided nature hike (2hrs)
+              {% elif forloop.counter == 3 %}Filipino lunch buffet
+              {% elif forloop.counter == 4 %}Viewpoint & photography spots
+              {% elif forloop.counter == 5 %}Bonfire session (evening)
+              {% else %}Free parking & shuttle{% endif %}
+            </li>
+            {% endfor %}
+          </ul>
+          <div class="flex items-center gap-2 py-3 border-t border-slate-800 mb-6">
+            <i data-lucide="users" class="w-4 h-4 text-slate-500"></i>
+            <span class="text-slate-500 text-xs">Up to 20 guests</span>
+          </div>
+          <a href="{% url 'booking' %}" class="block w-full text-center py-3.5 rounded-xl bg-teal-500 hover:bg-teal-400 text-white font-semibold text-sm shadow-lg shadow-teal-900/40 transition-all duration-300">
+            Book Explorer Package
+          </a>
+        </div>
+      </div>
+
+      <!-- Summit Celebration -->
+      <div class="card-lift flex flex-col rounded-2xl bg-slate-900 border border-slate-800 overflow-hidden">
+        <div class="h-1.5 bg-gradient-to-r from-purple-600 to-pink-500"></div>
+        <div class="p-8 flex flex-col flex-1">
+          <h3 class="font-display font-bold text-white text-2xl mb-1">Summit Celebration</h3>
+          <div class="flex items-baseline gap-1 mb-4">
+            <span class="text-4xl font-bold text-teal-400">₱1,200</span>
+            <span class="text-slate-500 text-sm">/ person</span>
+          </div>
+          <p class="text-slate-400 text-sm leading-relaxed mb-6">The ultimate SkyView experience for birthdays, anniversaries, and corporate retreats. Includes private venue, catered dinner, and exclusive sunset access.</p>
+          <ul class="space-y-2 mb-8 flex-1">
+            {% for item in "123456"|make_list %}
+            <li class="flex items-center gap-2.5 text-sm text-slate-300">
+              <i data-lucide="check-circle" class="w-4 h-4 text-purple-400 flex-shrink-0"></i>
+              {% if forloop.counter == 1 %}Private event venue (up to 50 pax)
+              {% elif forloop.counter == 2 %}Full-day exclusive access
+              {% elif forloop.counter == 3 %}Catered 3-course dinner
+              {% elif forloop.counter == 4 %}Sunset viewing session
+              {% elif forloop.counter == 5 %}Live acoustic music (2hrs)
+              {% else %}Dedicated event coordinator{% endif %}
+            </li>
+            {% endfor %}
+          </ul>
+          <div class="flex items-center gap-2 py-3 border-t border-slate-800 mb-6">
+            <i data-lucide="users" class="w-4 h-4 text-slate-500"></i>
+            <span class="text-slate-500 text-xs">Up to 50 guests</span>
+          </div>
+          <a href="{% url 'booking' %}" class="block w-full text-center py-3.5 rounded-xl bg-teal-500/10 hover:bg-teal-500 text-teal-400 hover:text-white border border-teal-500/30 hover:border-teal-500 font-semibold text-sm transition-all duration-300">
+            Book Celebration
+          </a>
+        </div>
+      </div>
+
+    </div>
+    {% endif %}
+
+  </div>
+</section>
+
+
+<!-- Custom Package Banner -->
+<section class="py-20 bg-slate-900 border-t border-slate-800">
+  <div class="max-w-4xl mx-auto px-4 text-center">
+    <div class="w-16 h-16 rounded-2xl bg-teal-500/15 flex items-center justify-center mx-auto mb-6">
+      <i data-lucide="sparkles" class="w-8 h-8 text-teal-400"></i>
+    </div>
+    <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-4">Need a Custom Package?</h2>
+    <p class="text-slate-400 text-lg mb-8 leading-relaxed max-w-2xl mx-auto">
+      Planning a wedding, corporate outing, or large group event? Our team can design a fully personalized package tailored to your specific needs and budget.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="{% url 'contact' %}" class="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-teal-500 hover:bg-teal-400 text-white font-semibold transition-all duration-300 hover:-translate-y-1 shadow-xl shadow-teal-900/40">
+        <i data-lucide="mail" class="w-4 h-4"></i>
+        Request Custom Package
+      </a>
+      <a href="tel:+639123456789" class="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-slate-800 hover:bg-slate-700 text-white font-semibold border border-slate-700 transition-all duration-300">
+        <i data-lucide="phone" class="w-4 h-4"></i>
+        Call Us Now
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="py-20 bg-slate-950">
+  <div class="max-w-3xl mx-auto px-4">
+    <div class="text-center mb-12">
+      <h2 class="font-display text-3xl font-bold text-white mb-3">Frequently Asked Questions</h2>
+      <p class="text-slate-400">Common questions about our packages and booking process.</p>
+    </div>
+
+    <div class="space-y-3" id="faq">
+      {% for qa in "1234"|make_list %}
+      <div class="rounded-xl bg-slate-900 border border-slate-800 overflow-hidden">
+        <button class="w-full text-left px-6 py-5 flex items-center justify-between gap-4 group faq-toggle">
+          <span class="text-white font-medium text-sm">
+            {% if forloop.counter == 1 %}Can I book for a same-day visit?
+            {% elif forloop.counter == 2 %}Is the entrance fee included in the package price?
+            {% elif forloop.counter == 3 %}Are children given a discount?
+            {% else %}What happens in case of bad weather?{% endif %}
+          </span>
+          <i data-lucide="chevron-down" class="w-5 h-5 text-slate-400 flex-shrink-0 transition-transform faq-arrow"></i>
+        </button>
+        <div class="faq-answer hidden px-6 pb-5">
+          <p class="text-slate-400 text-sm leading-relaxed">
+            {% if forloop.counter == 1 %}Yes! Same-day bookings are welcome, subject to availability. We recommend reserving your slot at least 24 hours in advance to guarantee your preferred time.
+            {% elif forloop.counter == 2 %}Yes, all package prices are inclusive of the entrance fee and listed amenities. There are no hidden charges.
+            {% elif forloop.counter == 3 %}Children 5 years old and below enter FREE. Children aged 6–12 receive a 50% discount on all package prices.
+            {% else %}Safety is our top priority. In case of heavy rain or typhoon, we will contact you to reschedule at no extra cost. We monitor weather conditions closely and notify guests at least 12 hours in advance.{% endif %}
+          </p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+  lucide.createIcons();
+  // FAQ accordion
+  document.querySelectorAll('.faq-toggle').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const answer = btn.nextElementSibling;
+      const arrow = btn.querySelector('.faq-arrow');
+      answer.classList.toggle('hidden');
+      arrow.style.transform = answer.classList.contains('hidden') ? '' : 'rotate(180deg)';
+    });
+  });
+</script>
+{% endblock %}

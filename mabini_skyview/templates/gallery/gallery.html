@@ -1,0 +1,210 @@
+{% extends 'base.html' %}
+
+{% block title %}Gallery — Mabini SkyView{% endblock %}
+
+{% block content %}
+
+<!-- Page Header -->
+<section class="relative pt-36 pb-20 overflow-hidden">
+  <div class="absolute inset-0 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950"></div>
+  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(20,184,166,0.10),transparent_55%)]"></div>
+  <div class="relative z-10 text-center px-4">
+    <p class="text-teal-400 text-xs font-medium uppercase tracking-[0.25em] mb-4">Visual Journey</p>
+    <h1 class="font-display text-5xl md:text-6xl font-bold text-white mb-6">Photo Gallery</h1>
+    <p class="text-slate-400 text-lg max-w-2xl mx-auto leading-relaxed">
+      Every corner of Mabini SkyView holds a scene worth capturing. Browse through moments that await you.
+    </p>
+  </div>
+</section>
+
+
+<!-- Gallery Grid -->
+<section class="py-16 bg-slate-950">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    {% if images %}
+    <!-- Dynamic gallery from database -->
+    <div class="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-4 space-y-4" id="gallery-grid">
+      {% for img in images %}
+      <div class="break-inside-avoid img-overlay rounded-xl overflow-hidden cursor-pointer group"
+           onclick="openLightbox('{{ img.image.url }}', '{{ img.caption }}', {{ forloop.counter0 }})">
+        <img
+          src="{{ img.image.url }}"
+          alt="{{ img.caption }}"
+          class="w-full object-cover"
+          loading="lazy"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-end p-4">
+          <div>
+            <p class="text-white text-sm font-medium leading-tight">{{ img.caption }}</p>
+            <div class="flex items-center gap-1 mt-1.5">
+              <i data-lucide="zoom-in" class="w-3.5 h-3.5 text-teal-400"></i>
+              <span class="text-teal-400 text-xs">View full size</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    {% else %}
+    <!-- Placeholder gallery grid -->
+    <div class="mb-8">
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-teal-500/10 border border-teal-500/20 text-teal-400 text-xs">
+        <i data-lucide="info" class="w-3.5 h-3.5"></i>
+        No photos uploaded yet. Add images via the Admin panel to display them here.
+      </div>
+    </div>
+
+    <!-- Placeholder tiles using Unsplash -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4" id="gallery-grid">
+      {% for item in "12345678910111213121314"|make_list %}
+      <div class="img-overlay rounded-xl overflow-hidden cursor-pointer group aspect-square
+          {% if forloop.counter == 1 %}sm:col-span-2 sm:row-span-2{% endif %}
+          {% if forloop.counter == 7 %}lg:col-span-2{% endif %}"
+           onclick="openLightboxStatic(this)">
+        <img
+          src="https://picsum.photos/seed/skyview{{ forloop.counter }}/600/600"
+          alt="Scenic view at Mabini SkyView"
+          class="w-full h-full object-cover"
+          loading="lazy"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-end p-4">
+          <div>
+            <p class="text-white text-sm font-medium">Scenic View #{{ forloop.counter }}</p>
+            <div class="flex items-center gap-1 mt-1">
+              <i data-lucide="zoom-in" class="w-3.5 h-3.5 text-teal-400"></i>
+              <span class="text-teal-400 text-xs">View full size</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+  </div>
+</section>
+
+
+<!-- Upload CTA -->
+<section class="py-16 bg-slate-900 border-t border-slate-800">
+  <div class="max-w-3xl mx-auto text-center px-4">
+    <div class="w-16 h-16 rounded-2xl bg-teal-500/15 flex items-center justify-center mx-auto mb-6">
+      <i data-lucide="camera" class="w-8 h-8 text-teal-400"></i>
+    </div>
+    <h3 class="font-display font-bold text-white text-2xl mb-4">Have Great Photos from Your Visit?</h3>
+    <p class="text-slate-400 mb-8 leading-relaxed">
+      Tag us on Instagram <span class="text-teal-400 font-medium">@MabiniSkyView</span> or send your best shots to our email — we'd love to feature them here and on our social media!
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="{% url 'contact' %}" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-teal-500 hover:bg-teal-400 text-white font-semibold text-sm transition-all duration-300">
+        <i data-lucide="mail" class="w-4 h-4"></i>
+        Send Us Your Photos
+      </a>
+      <a href="{% url 'booking' %}" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-slate-800 hover:bg-slate-700 text-white font-semibold text-sm border border-slate-700 transition-all duration-300">
+        <i data-lucide="calendar" class="w-4 h-4"></i>
+        Plan Your Visit
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- Lightbox Modal -->
+<div id="lightbox" class="fixed inset-0 z-50 bg-slate-950/98 backdrop-blur-xl hidden items-center justify-center p-4">
+  <!-- Close button -->
+  <button onclick="closeLightbox()" class="absolute top-6 right-6 w-10 h-10 rounded-full bg-slate-800 hover:bg-slate-700 flex items-center justify-center text-slate-300 hover:text-white transition-colors z-10">
+    <i data-lucide="x" class="w-5 h-5"></i>
+  </button>
+
+  <!-- Navigation -->
+  <button id="prev-btn" onclick="navigateLightbox(-1)" class="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-slate-800/80 hover:bg-slate-700 flex items-center justify-center text-slate-300 hover:text-white transition-colors">
+    <i data-lucide="chevron-left" class="w-6 h-6"></i>
+  </button>
+  <button id="next-btn" onclick="navigateLightbox(1)" class="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-slate-800/80 hover:bg-slate-700 flex items-center justify-center text-slate-300 hover:text-white transition-colors">
+    <i data-lucide="chevron-right" class="w-6 h-6"></i>
+  </button>
+
+  <!-- Image container -->
+  <div class="max-w-5xl w-full flex flex-col items-center gap-4" onclick="event.stopPropagation()">
+    <img id="lightbox-img" src="" alt="" class="max-h-[75vh] w-auto rounded-2xl shadow-2xl object-contain" />
+    <div class="flex items-center gap-3">
+      <p id="lightbox-caption" class="text-slate-300 text-sm text-center"></p>
+      <span id="lightbox-counter" class="text-slate-500 text-xs"></span>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+  lucide.createIcons();
+
+  // Collect all gallery images for navigation
+  const galleryItems = [];
+  document.querySelectorAll('#gallery-grid [onclick]').forEach((el, i) => {
+    const img = el.querySelector('img');
+    const caption = el.querySelector('.text-white') ? el.querySelector('.text-white').textContent.trim() : '';
+    if (img) galleryItems.push({ src: img.src, caption });
+  });
+
+  let currentIndex = 0;
+
+  function openLightbox(src, caption, index) {
+    currentIndex = index;
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox-caption').textContent = caption;
+    document.getElementById('lightbox-counter').textContent = `${index + 1} / ${galleryItems.length}`;
+    showLightbox();
+  }
+
+  function openLightboxStatic(el) {
+    const img = el.querySelector('img');
+    const captionEl = el.querySelector('.text-white');
+    const index = Array.from(document.querySelectorAll('#gallery-grid [onclick]')).indexOf(el);
+    currentIndex = index;
+    document.getElementById('lightbox-img').src = img.src;
+    document.getElementById('lightbox-caption').textContent = captionEl ? captionEl.textContent.trim() : '';
+    document.getElementById('lightbox-counter').textContent = `${index + 1} / ${galleryItems.length}`;
+    showLightbox();
+  }
+
+  function showLightbox() {
+    const lb = document.getElementById('lightbox');
+    lb.classList.remove('hidden');
+    lb.classList.add('flex');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    const lb = document.getElementById('lightbox');
+    lb.classList.add('hidden');
+    lb.classList.remove('flex');
+    document.body.style.overflow = '';
+  }
+
+  function navigateLightbox(direction) {
+    currentIndex = (currentIndex + direction + galleryItems.length) % galleryItems.length;
+    const item = galleryItems[currentIndex];
+    if (item) {
+      document.getElementById('lightbox-img').src = item.src;
+      document.getElementById('lightbox-caption').textContent = item.caption;
+      document.getElementById('lightbox-counter').textContent = `${currentIndex + 1} / ${galleryItems.length}`;
+    }
+  }
+
+  // Close on backdrop click
+  document.getElementById('lightbox').addEventListener('click', function(e) {
+    if (e.target === this) closeLightbox();
+  });
+
+  // Keyboard navigation
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') navigateLightbox(-1);
+    if (e.key === 'ArrowRight') navigateLightbox(1);
+  });
+</script>
+{% endblock %}

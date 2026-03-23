@@ -1,0 +1,344 @@
+{% extends 'base.html' %}
+
+{% block title %}Mabini SkyView — Experience Breathtaking Views in Cebu{% endblock %}
+
+{% block content %}
+
+<!-- ========== HERO SECTION ========== -->
+<section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+
+  <!-- Background image with overlay -->
+  <div class="absolute inset-0 z-0">
+    <img
+      src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&q=80"
+      alt="Scenic mountain view"
+      class="w-full h-full object-cover"
+    />
+    <!-- Multi-layer gradient overlay for depth -->
+    <div class="absolute inset-0 bg-gradient-to-b from-slate-950/70 via-slate-900/50 to-slate-950/90"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-slate-950/40 via-transparent to-slate-950/20"></div>
+  </div>
+
+  <!-- Decorative floating elements -->
+  <div class="absolute top-1/4 right-10 w-72 h-72 bg-teal-500/10 rounded-full blur-3xl pointer-events-none"></div>
+  <div class="absolute bottom-1/4 left-10 w-64 h-64 bg-cyan-600/10 rounded-full blur-3xl pointer-events-none"></div>
+
+  <!-- Hero content -->
+  <div class="relative z-10 text-center px-4 max-w-4xl mx-auto pt-24">
+    <!-- Badge -->
+    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-teal-500/20 border border-teal-500/30 text-teal-300 text-xs font-medium uppercase tracking-widest mb-8 animate-fade-in">
+      <i data-lucide="map-pin" class="w-3 h-3"></i>
+      Mabini, Cebu City, Philippines
+    </div>
+
+    <!-- Main heading -->
+    <h1 class="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white leading-tight mb-6 animate-fade-up">
+      Mabini<br/>
+      <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-cyan-300">SkyView</span>
+    </h1>
+
+    <!-- Subtitle -->
+    <p class="text-slate-300 text-lg sm:text-xl md:text-2xl font-light leading-relaxed mb-10 max-w-2xl mx-auto animate-fade-up delay-100">
+      Experience breathtaking views, fresh mountain air, and unforgettable moments above the Visayan Sea.
+    </p>
+
+    <!-- CTA Buttons -->
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-up delay-200">
+      <a href="{% url 'booking' %}"
+         class="group px-8 py-4 rounded-full bg-teal-500 hover:bg-teal-400 text-white font-semibold text-base transition-all duration-300 shadow-2xl shadow-teal-900/50 hover:shadow-teal-500/40 hover:-translate-y-1 flex items-center gap-2">
+        Book Your Visit
+        <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+      </a>
+      <a href="{% url 'packages' %}"
+         class="px-8 py-4 rounded-full bg-white/10 hover:bg-white/20 text-white font-semibold text-base border border-white/20 hover:border-white/40 transition-all duration-300 backdrop-blur-sm">
+        View Packages
+      </a>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="mt-20 flex flex-col items-center gap-2 opacity-60 animate-fade-in delay-400">
+      <span class="text-slate-400 text-xs uppercase tracking-widest">Scroll to explore</span>
+      <div class="w-px h-12 bg-gradient-to-b from-teal-400 to-transparent"></div>
+    </div>
+  </div>
+
+  <!-- Stats strip at bottom of hero -->
+  <div class="absolute bottom-0 left-0 right-0 z-10 bg-slate-950/80 backdrop-blur-md border-t border-white/10">
+    <div class="max-w-5xl mx-auto px-4 py-5 grid grid-cols-2 md:grid-cols-4 divide-x divide-white/10">
+      <div class="px-6 text-center">
+        <p class="font-display font-bold text-2xl text-teal-400">500m+</p>
+        <p class="text-slate-400 text-xs mt-1">Above Sea Level</p>
+      </div>
+      <div class="px-6 text-center">
+        <p class="font-display font-bold text-2xl text-teal-400">360°</p>
+        <p class="text-slate-400 text-xs mt-1">Panoramic Views</p>
+      </div>
+      <div class="px-6 text-center hidden md:block">
+        <p class="font-display font-bold text-2xl text-teal-400">5★</p>
+        <p class="text-slate-400 text-xs mt-1">Guest Rating</p>
+      </div>
+      <div class="px-6 text-center hidden md:block">
+        <p class="font-display font-bold text-2xl text-teal-400">10K+</p>
+        <p class="text-slate-400 text-xs mt-1">Happy Visitors</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ========== AMENITIES SECTION ========== -->
+<section class="py-24 bg-slate-950">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <!-- Section header -->
+    <div class="text-center mb-16">
+      <p class="text-teal-400 text-xs font-medium uppercase tracking-[0.25em] mb-3">What We Offer</p>
+      <h2 class="font-display text-4xl md:text-5xl font-bold text-white mb-4">World-Class Amenities</h2>
+      <p class="text-slate-400 max-w-xl mx-auto text-base leading-relaxed">
+        Designed to enhance your connection with nature while providing every comfort you deserve.
+      </p>
+    </div>
+
+    <!-- Amenities grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      {% with amenities='' %}
+      <!-- Amenity cards -->
+      {% for item in "123456"|make_list %}
+      {% endfor %}
+      {% endwith %}
+
+      <!-- Viewpoint Deck -->
+      <div class="card-lift group p-7 rounded-2xl bg-slate-900 border border-slate-800 hover:border-teal-500/40 transition-colors">
+        <div class="w-12 h-12 rounded-xl bg-teal-500/15 flex items-center justify-center mb-5 group-hover:bg-teal-500/25 transition-colors">
+          <i data-lucide="binoculars" class="w-6 h-6 text-teal-400"></i>
+        </div>
+        <h3 class="font-display font-semibold text-white text-lg mb-2">Scenic Viewpoint Deck</h3>
+        <p class="text-slate-400 text-sm leading-relaxed">360-degree panoramic platform overlooking the Visayan Sea, Cebu City skyline, and surrounding mountain ranges.</p>
+      </div>
+
+      <!-- Nature Trails -->
+      <div class="card-lift group p-7 rounded-2xl bg-slate-900 border border-slate-800 hover:border-teal-500/40 transition-colors">
+        <div class="w-12 h-12 rounded-xl bg-teal-500/15 flex items-center justify-center mb-5 group-hover:bg-teal-500/25 transition-colors">
+          <i data-lucide="trees" class="w-6 h-6 text-teal-400"></i>
+        </div>
+        <h3 class="font-display font-semibold text-white text-lg mb-2">Nature Trails</h3>
+        <p class="text-slate-400 text-sm leading-relaxed">Guided and self-guided hiking trails through lush Cebuano forests with diverse flora and fauna.</p>
+      </div>
+
+      <!-- Campfire Area -->
+      <div class="card-lift group p-7 rounded-2xl bg-slate-900 border border-slate-800 hover:border-teal-500/40 transition-colors">
+        <div class="w-12 h-12 rounded-xl bg-orange-500/15 flex items-center justify-center mb-5 group-hover:bg-orange-500/25 transition-colors">
+          <i data-lucide="flame" class="w-6 h-6 text-orange-400"></i>
+        </div>
+        <h3 class="font-display font-semibold text-white text-lg mb-2">Campfire & Bonfire Area</h3>
+        <p class="text-slate-400 text-sm leading-relaxed">Cozy open-air campfire zones perfect for group gatherings, storytelling, and stargazing under clear Cebu skies.</p>
+      </div>
+
+      <!-- Restaurant -->
+      <div class="card-lift group p-7 rounded-2xl bg-slate-900 border border-slate-800 hover:border-teal-500/40 transition-colors">
+        <div class="w-12 h-12 rounded-xl bg-yellow-500/15 flex items-center justify-center mb-5 group-hover:bg-yellow-500/25 transition-colors">
+          <i data-lucide="utensils" class="w-6 h-6 text-yellow-400"></i>
+        </div>
+        <h3 class="font-display font-semibold text-white text-lg mb-2">Sky Kitchen & Dining</h3>
+        <p class="text-slate-400 text-sm leading-relaxed">Elevated open-air restaurant serving authentic Filipino cuisine and refreshing beverages with a view.</p>
+      </div>
+
+      <!-- Event Venue -->
+      <div class="card-lift group p-7 rounded-2xl bg-slate-900 border border-slate-800 hover:border-teal-500/40 transition-colors">
+        <div class="w-12 h-12 rounded-xl bg-purple-500/15 flex items-center justify-center mb-5 group-hover:bg-purple-500/25 transition-colors">
+          <i data-lucide="party-popper" class="w-6 h-6 text-purple-400"></i>
+        </div>
+        <h3 class="font-display font-semibold text-white text-lg mb-2">Event & Function Venues</h3>
+        <p class="text-slate-400 text-sm leading-relaxed">Host weddings, birthdays, corporate retreats, and team-building events in our scenic mountain venues.</p>
+      </div>
+
+      <!-- Photography Spots -->
+      <div class="card-lift group p-7 rounded-2xl bg-slate-900 border border-slate-800 hover:border-teal-500/40 transition-colors">
+        <div class="w-12 h-12 rounded-xl bg-pink-500/15 flex items-center justify-center mb-5 group-hover:bg-pink-500/25 transition-colors">
+          <i data-lucide="camera" class="w-6 h-6 text-pink-400"></i>
+        </div>
+        <h3 class="font-display font-semibold text-white text-lg mb-2">Instagrammable Spots</h3>
+        <p class="text-slate-400 text-sm leading-relaxed">Carefully curated photo installations and natural frames designed for perfect shots at sunrise and sunset.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ========== GALLERY PREVIEW ========== -->
+<section class="py-24 bg-slate-900">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+      <div>
+        <p class="text-teal-400 text-xs font-medium uppercase tracking-[0.25em] mb-3">Visual Escape</p>
+        <h2 class="font-display text-4xl md:text-5xl font-bold text-white">Captured Moments</h2>
+      </div>
+      <a href="{% url 'gallery' %}" class="flex items-center gap-2 text-teal-400 hover:text-teal-300 text-sm font-medium transition-colors group">
+        View All Photos
+        <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+      </a>
+    </div>
+
+    {% if featured_images %}
+    <!-- Dynamic gallery grid from DB -->
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
+      {% for img in featured_images %}
+      <div class="img-overlay rounded-xl overflow-hidden aspect-square cursor-pointer {% if forloop.first %}md:col-span-2 md:row-span-2{% endif %}"
+           onclick="openLightbox('{{ img.image.url }}', '{{ img.caption }}')">
+        <img src="{{ img.image.url }}" alt="{{ img.caption }}" class="w-full h-full object-cover" />
+        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity flex items-end p-4">
+          <p class="text-white text-sm font-medium">{{ img.caption }}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <!-- Placeholder gallery using Unsplash -->
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
+      <div class="img-overlay rounded-xl overflow-hidden md:col-span-2 md:row-span-2 aspect-square md:aspect-auto md:h-80">
+        <img src="https://images.unsplash.com/photo-1540979388789-6cee28a1cdc9?w=800&q=80" alt="Scenic mountain view" class="w-full h-full object-cover" />
+      </div>
+      <div class="img-overlay rounded-xl overflow-hidden aspect-square">
+        <img src="https://images.unsplash.com/photo-1501854140801-50d01698950b?w=400&q=80" alt="Mountain landscape" class="w-full h-full object-cover" />
+      </div>
+      <div class="img-overlay rounded-xl overflow-hidden aspect-square">
+        <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=400&q=80" alt="Sunset view" class="w-full h-full object-cover" />
+      </div>
+      <div class="img-overlay rounded-xl overflow-hidden aspect-square">
+        <img src="https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=400&q=80" alt="Nature trail" class="w-full h-full object-cover" />
+      </div>
+      <div class="img-overlay rounded-xl overflow-hidden aspect-square">
+        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=80" alt="Mountain peak" class="w-full h-full object-cover" />
+      </div>
+    </div>
+    {% endif %}
+
+  </div>
+</section>
+
+
+<!-- ========== PACKAGES PREVIEW ========== -->
+<section class="py-24 bg-slate-950">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div class="text-center mb-16">
+      <p class="text-teal-400 text-xs font-medium uppercase tracking-[0.25em] mb-3">Choose Your Experience</p>
+      <h2 class="font-display text-4xl md:text-5xl font-bold text-white mb-4">Our Packages</h2>
+      <p class="text-slate-400 max-w-xl mx-auto text-base leading-relaxed">
+        From solo escapes to grand celebrations — we have a package crafted for every kind of visitor.
+      </p>
+    </div>
+
+    {% if featured_packages %}
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+      {% for pkg in featured_packages %}
+      <div class="card-lift relative p-7 rounded-2xl bg-slate-900 border border-slate-800 hover:border-teal-500/50 transition-colors flex flex-col {% if forloop.counter == 2 %}ring-2 ring-teal-500/50{% endif %}">
+        {% if forloop.counter == 2 %}
+        <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-teal-500 rounded-full text-xs font-semibold text-white">Most Popular</div>
+        {% endif %}
+        <div>
+          <h3 class="font-display font-bold text-white text-xl mb-2">{{ pkg.name }}</h3>
+          <p class="text-3xl font-bold text-teal-400 mb-1">₱{{ pkg.price }}</p>
+          <p class="text-slate-500 text-xs mb-4">per person</p>
+          <p class="text-slate-400 text-sm leading-relaxed mb-6">{{ pkg.description|truncatewords:20 }}</p>
+        </div>
+        <div class="mt-auto">
+          <a href="{% url 'booking' %}" class="block w-full text-center py-3 rounded-xl bg-teal-500/15 hover:bg-teal-500 text-teal-400 hover:text-white border border-teal-500/30 hover:border-teal-500 font-medium text-sm transition-all duration-300">
+            Book This Package
+          </a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <!-- Placeholder packages -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+      {% for pkg in "ABC"|make_list %}
+      <div class="card-lift p-7 rounded-2xl bg-slate-900 border border-slate-800 {% if forloop.counter == 2 %}ring-2 ring-teal-500/50 relative{% endif %}">
+        {% if forloop.counter == 2 %}<div class="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-teal-500 rounded-full text-xs font-semibold text-white">Most Popular</div>{% endif %}
+        <h3 class="font-display font-bold text-white text-xl mb-2">
+          {% if forloop.counter == 1 %}Day Tripper{% elif forloop.counter == 2 %}SkyView Explorer{% else %}Summit Celebration{% endif %}
+        </h3>
+        <p class="text-3xl font-bold text-teal-400 mb-1">
+          {% if forloop.counter == 1 %}₱350{% elif forloop.counter == 2 %}₱650{% else %}₱1,200{% endif %}
+        </p>
+        <p class="text-slate-500 text-xs mb-4">per person</p>
+        <p class="text-slate-400 text-sm leading-relaxed mb-6">
+          {% if forloop.counter == 1 %}Perfect for a quick daytime getaway. Includes entrance, trail access, and viewpoint access.
+          {% elif forloop.counter == 2 %}Our bestselling full-day experience with meals, guided tour, and bonfire session.
+          {% else %}Premium sunset package with private venue, catered dinner, and exclusive amenities.{% endif %}
+        </p>
+        <a href="{% url 'booking' %}" class="block w-full text-center py-3 rounded-xl bg-teal-500/15 hover:bg-teal-500 text-teal-400 hover:text-white border border-teal-500/30 hover:border-teal-500 font-medium text-sm transition-all duration-300">
+          Book This Package
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    <div class="text-center">
+      <a href="{% url 'packages' %}" class="inline-flex items-center gap-2 text-teal-400 hover:text-teal-300 font-medium text-sm transition-colors group">
+        See All Packages
+        <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ========== CTA BANNER ========== -->
+<section class="relative py-24 overflow-hidden">
+  <div class="absolute inset-0">
+    <img src="https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=1920&q=80" alt="Night sky" class="w-full h-full object-cover" />
+    <div class="absolute inset-0 bg-slate-950/80"></div>
+  </div>
+  <div class="relative z-10 text-center px-4 max-w-3xl mx-auto">
+    <i data-lucide="star" class="w-8 h-8 text-yellow-400 mx-auto mb-6 fill-yellow-400"></i>
+    <h2 class="font-display text-4xl md:text-5xl font-bold text-white mb-6">
+      Your Perfect Escape<br/>Awaits Above the Clouds
+    </h2>
+    <p class="text-slate-300 text-lg mb-10 leading-relaxed">
+      Whether it's sunrise coffee with a panoramic view or a star-lit dinner above the city — Mabini SkyView is ready to make it extraordinary.
+    </p>
+    <a href="{% url 'booking' %}" class="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-teal-500 hover:bg-teal-400 text-white font-semibold text-base transition-all duration-300 shadow-2xl shadow-teal-900/50 hover:shadow-teal-500/30 hover:-translate-y-1">
+      <i data-lucide="calendar" class="w-5 h-5"></i>
+      Book Now — It's Easy!
+    </a>
+  </div>
+</section>
+
+
+<!-- Lightbox Modal -->
+<div id="lightbox" class="fixed inset-0 z-50 bg-slate-950/95 backdrop-blur-lg hidden flex items-center justify-center p-4" onclick="closeLightbox()">
+  <div class="relative max-w-4xl w-full" onclick="event.stopPropagation()">
+    <button onclick="closeLightbox()" class="absolute -top-12 right-0 text-slate-300 hover:text-white transition-colors">
+      <i data-lucide="x" class="w-7 h-7"></i>
+    </button>
+    <img id="lightbox-img" src="" alt="" class="w-full rounded-2xl shadow-2xl" />
+    <p id="lightbox-caption" class="text-center text-slate-300 text-sm mt-4"></p>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+  function openLightbox(src, caption) {
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox-caption').textContent = caption;
+    document.getElementById('lightbox').classList.remove('hidden');
+    document.getElementById('lightbox').classList.add('flex');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.add('hidden');
+    document.getElementById('lightbox').classList.remove('flex');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+  lucide.createIcons();
+</script>
+{% endblock %}
