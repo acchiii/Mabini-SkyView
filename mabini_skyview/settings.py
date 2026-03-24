@@ -25,8 +25,7 @@ INSTALLED_APPS = [
     'gallery',
     'packages',
     'tailwind',
-    'theme',
-    
+    'theme',   
 ]
 
 MIDDLEWARE = [
