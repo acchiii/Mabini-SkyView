@@ -4,10 +4,5 @@ services:
     env: python
     plan: free
     buildCommand: pip install -r requirements.txt 
-    startCommand: >
-      python manage.py makemigrations && 
-      python manage.py migrate --run-syncdb && 
-      python seed_data.py && 
-      python manage.py collectstatic --no-input && 
-      gunicorn mabini_skyview.wsgi:application
+    startCommand: python manage.py makemigrations && python manage.py migrate --run-syncdb && python seed_data.py && python manage.py collectstatic --no-input && gunicorn mabini_skyview.wsgi:application
     autoDeploy: true
