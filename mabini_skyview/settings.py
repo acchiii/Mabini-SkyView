@@ -11,7 +11,7 @@ SECRET_KEY = 'django-insecure-mabini-skyview-secret-key-change-in-production-202
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['*', '192.168.137.1']
+ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
