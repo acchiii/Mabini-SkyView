@@ -1,4 +1,4 @@
-# 🏔️ Mabini SkyView — Django Tourist Website
+# Mabini SkyView — Django Tourist Website
 
 A full-stack Django website for **Mabini SkyView**, a scenic tourist destination in Mabini, Cebu City, Philippines. Built with Django 4.2, Django Templates, and Tailwind CSS (CDN).
 
