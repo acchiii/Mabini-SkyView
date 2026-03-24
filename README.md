@@ -255,8 +255,8 @@ Hero and gallery sections use Unsplash URLs. Replace with real SkyView photos:
 ## 📞 Contact Info in Templates
 
 To update the default contact info, search for these in the templates:
-- Phone: `+63 912 345 6789`
-- Email: `hello@mabiniskyview.ph`
+- Phone: ``
+- Email: ``
 - Address: `Mabini, Cebu City, Cebu, Philippines 6000`
 
 ---
