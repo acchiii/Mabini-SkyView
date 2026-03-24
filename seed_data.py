@@ -1,5 +1,6 @@
 import os
 import django
+from decouple import config
 
 # 1️⃣ Set the settings module first
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'mabini_skyview.settings')
@@ -29,8 +30,8 @@ for data in packages_data:
     print(f"{status}: {pkg.name} (₱{pkg.price})")
 
 # Create superuser if it doesn’t exist
-if not User.objects.filter(username="admin").exists():
-    User.objects.create_superuser("admin", "mabiniskyviewresort@yahoo.com", "skyview2024")
+if not User.objects.filter(username=config('admin')).exists():
+    User.objects.create_superuser(config('admin'), config('adminemail'), config('adminpass'))
     print("Superuser created: admin / skyview2024")
 else:
     print("Superuser 'admin' already exists")

@@ -5,6 +5,7 @@ from django.conf.urls.static import static
 from django.conf.urls import handler404, handler500
 from core.views import custom_404, custom_500
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('core.urls')),
