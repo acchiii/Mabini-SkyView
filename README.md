@@ -4,7 +4,7 @@ A full-stack Django website for **Mabini SkyView**, a scenic tourist destination
 
 ---
 
-## ✨ Features
+##  Features
 
 - **Responsive** mobile-first design across all devices
 - **Sticky glass navbar** with active link highlighting
@@ -20,7 +20,7 @@ A full-stack Django website for **Mabini SkyView**, a scenic tourist destination
 
 ---
 
-## 🗂️ Project Structure
+## Project Structure
 
 ```
 mabini_skyview/
@@ -76,7 +76,7 @@ mabini_skyview/
 
 ---
 
-## ⚙️ Setup Instructions
+##  Setup Instructions
 
 ### Prerequisites
 - Python 3.9 or higher
@@ -132,7 +132,7 @@ Password:   skyview2024
 
 ---
 
-## 📦 Django Models
+##  Django Models
 
 ### `Booking` (bookings/models.py)
 | Field | Type | Notes |
@@ -175,7 +175,7 @@ Password:   skyview2024
 
 ---
 
-## 🔑 Admin Panel
+##  Admin Panel
 
 Access at `http://127.0.0.1:8000/admin` with `admin` / `skyview2024`.
 
@@ -187,7 +187,7 @@ Access at `http://127.0.0.1:8000/admin` with `admin` / `skyview2024`.
 
 ---
 
-## 🖼️ Adding Gallery Images
+##  Adding Gallery Images
 
 1. Log into Admin: `http://127.0.0.1:8000/admin`
 2. Go to **Gallery → Gallery Images → Add**
@@ -196,7 +196,7 @@ Access at `http://127.0.0.1:8000/admin` with `admin` / `skyview2024`.
 
 ---
 
-## 🎨 Design Highlights
+##  Design Highlights
 
 | Feature | Implementation |
 |---------|---------------|
@@ -211,7 +211,7 @@ Access at `http://127.0.0.1:8000/admin` with `admin` / `skyview2024`.
 
 ---
 
-## 🌐 Pages & URLs
+##  Pages & URLs
 
 | URL | Page | View |
 |-----|------|------|
@@ -225,7 +225,7 @@ Access at `http://127.0.0.1:8000/admin` with `admin` / `skyview2024`.
 
 ---
 
-## 🚀 Going to Production
+## Going to Production
 
 1. Set `DEBUG = False` in `settings.py`
 2. Change `SECRET_KEY` to a secure random value
@@ -241,16 +241,7 @@ gunicorn mabini_skyview.wsgi:application --bind 0.0.0.0:8000
 
 ---
 
-## 📸 Replacing Placeholder Images
 
-Hero and gallery sections use Unsplash URLs. Replace with real SkyView photos:
-
-1. Add images via Admin → Gallery → Gallery Images
-2. For hero/about backgrounds, update the `<img src="...">` in the templates:
-   - `templates/core/home.html` — Hero and CTA section backgrounds
-   - `templates/core/about.html` — Page header and collage images
-
----
 
 ## 📞 Contact Info in Templates
 
