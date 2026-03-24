@@ -4,14 +4,14 @@ Django settings for Mabini SkyView project.
 
 from pathlib import Path
 import os
+from decouple import config
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-mabini-skyview-secret-key-change-in-production-2024'
+SECRET_KEY = config('SECRET_KEY')
+DEBUG = config('DEBUG', cast=bool)
 
-DEBUG = True
-
-ALLOWED_HOSTS = ['*'] # '192.168.137.1', 'localhost', '127.0.0.1'
+ALLOWED_HOSTS = config('ALLOWED_HOST').split(',') # '192.168.137.1', 'localhost', '127.0.0.1'
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -26,7 +26,7 @@ INSTALLED_APPS = [
     'packages',
     'tailwind',
     'theme',
-    'django_extensions',
+    
 ]
 
 MIDDLEWARE = [
