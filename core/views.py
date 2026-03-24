@@ -42,3 +42,14 @@ def contact(request):
             return redirect('contact')
 
     return render(request, 'core/contact.html')
+
+def custom_404(request, exception):
+    return render(request, '404.html', {
+        'status':404,
+        'error': exception,
+        })
+
+def custom_500(request):
+    return render(request, '500.html', {
+        'status':404,
+        })
