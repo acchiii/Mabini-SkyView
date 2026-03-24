@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block title %}Contact Us — Mabini SkyView{% endblock %}
 
 {% block content %}
@@ -48,8 +48,8 @@
             </div>
             <div>
               <p class="text-white font-medium text-sm mb-1">Phone / Viber</p>
-              <a href="tel:+639123456789" class="text-slate-400 hover:text-teal-400 text-sm transition-colors">+63 912 345 6789</a><br/>
-              <a href="tel:+63322345678" class="text-slate-400 hover:text-teal-400 text-sm transition-colors">(032) 234-5678</a>
+              <a href="tel:+639771121977" class="text-slate-400 hover:text-teal-400 text-sm transition-colors">+63 977 112 1977</a><br/>
+              {% comment %} <a href="tel:+63322345678" class="text-slate-400 hover:text-teal-400 text-sm transition-colors">(032) 234-5678</a> {% endcomment %}
             </div>
           </div>
 
@@ -59,8 +59,8 @@
             </div>
             <div>
               <p class="text-white font-medium text-sm mb-1">Email</p>
-              <a href="mailto:hello@mabiniskyview.ph" class="text-slate-400 hover:text-teal-400 text-sm transition-colors">hello@mabiniskyview.ph</a><br/>
-              <a href="mailto:bookings@mabiniskyview.ph" class="text-slate-400 hover:text-teal-400 text-sm transition-colors">bookings@mabiniskyview.ph</a>
+              <a href="mailto:mabiniskyviewresort@yahoo.com" class="text-slate-400 hover:text-teal-400 text-sm transition-colors">mabiniskyviewresort@yahoo.com</a><br/>
+              {% comment %} <a href="mailto:bookings@mabiniskyview.ph" class="text-slate-400 hover:text-teal-400 text-sm transition-colors">bookings@mabiniskyview.ph</a> {% endcomment %}
             </div>
           </div>
 
@@ -80,11 +80,17 @@
         <div class="p-5 rounded-xl bg-slate-900 border border-slate-800">
           <p class="text-white font-medium text-sm mb-4">Follow Us</p>
           <div class="flex items-center gap-3">
-            <a href="#" class="flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-600/20 hover:bg-blue-600/40 text-blue-400 text-xs font-medium transition-colors">
-              <i data-lucide="facebook" class="w-4 h-4"></i> Facebook
+            <a href="https://www.facebook.com/mabiniskyviewresort" class="flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-600/20 hover:bg-blue-600/40 text-blue-400 text-xs font-medium transition-colors">
+              <i data-lucide="facebook" class="hidden w-4 h-4"></i>
+               <img src="{% static 'images/facebook.png' %}" class="rounded-full w-4 h-4" alt="Facebook"> Facebook
             </a>
-            <a href="#" class="flex items-center gap-2 px-4 py-2 rounded-lg bg-pink-600/20 hover:bg-pink-600/40 text-pink-400 text-xs font-medium transition-colors">
-              <i data-lucide="instagram" class="w-4 h-4"></i> Instagram
+            <a href="https://www.instagram.com/mabiniskyview" class="flex items-center gap-2 px-4 py-2 rounded-lg bg-pink-600/20 hover:bg-pink-600/40 text-pink-400 text-xs font-medium transition-colors">
+              <i data-lucide="instagram" class="hidden w-4 h-4"></i>
+              <img src="{% static 'images/instagram.png' %}" class="rounded-full w-4 h-4" alt="Facebook"> Instagram
+            </a>
+            <a href="https://www.tiktok.com/@mabiniskyviewresort" class="flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-600/20 hover:bg-violet-600/40 text-red-400 text-xs font-medium transition-colors">
+              <i data-lucide="instagram" class="hidden w-4 h-4"></i>
+              <img src="{% static 'images/tiktok.png' %}" class="rounded-full w-4 h-4" alt="Facebook"> TikTok
             </a>
           </div>
         </div>

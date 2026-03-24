@@ -1,9 +1,12 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{% block title %}Mabini SkyView — Cebu's Scenic Escape{% endblock %}</title>
+  <link rel="shortcut icon" href="{% static 'images/fav.jpg' %}" type="image/x-icon">
   <meta name="description" content="Experience breathtaking views at Mabini SkyView, a premier scenic tourist destination in Mabini, Cebu City, Philippines." />
 
   <!-- Tailwind CSS CDN -->
@@ -142,7 +145,8 @@
         <!-- Logo -->
         <a href="{% url 'home' %}" class="flex items-center gap-3 group">
           <div class="w-9 h-9 rounded-full bg-gradient-to-br from-teal-400 to-cyan-600 flex items-center justify-center shadow-lg shadow-teal-900/50">
-            <i data-lucide="mountain" class="w-5 h-5 text-white"></i>
+            <i data-lucide="mountain" class="hidden w-full h-full text-white"></i>
+            <img src="{% static 'images/fav.jpg' %}" class="rounded-full w-full h-full" alt="">
           </div>
           <div class="leading-none">
             <p class="font-display font-bold text-white text-base tracking-tight">Mabini SkyView</p>
@@ -217,7 +221,9 @@
         <div class="lg:col-span-2">
           <div class="flex items-center gap-3 mb-4">
             <div class="w-10 h-10 rounded-full bg-gradient-to-br from-teal-400 to-cyan-600 flex items-center justify-center">
-              <i data-lucide="mountain" class="w-5 h-5 text-white"></i>
+              <i data-lucide="mountain" class="hidden w-5 h-5 text-white"></i>
+              <img src="{% static 'images/fav.jpg' %}" class="rounded-full w-full h-full" alt="">
+        
             </div>
             <div>
               <p class="font-display font-bold text-white text-lg">Mabini SkyView</p>
@@ -228,14 +234,17 @@
             Nestled in the hills of Mabini, Cebu City, SkyView offers an unparalleled experience of nature, serenity, and breathtaking panoramic vistas of the Visayan Sea.
           </p>
           <div class="flex items-center gap-3 mt-6">
-            <a href="#" class="w-9 h-9 rounded-full bg-slate-800 hover:bg-teal-600 flex items-center justify-center transition-colors">
-              <i data-lucide="facebook" class="w-4 h-4 text-slate-300"></i>
+            <a href="https://www.facebook.com/mabiniskyviewresort" target="_blank" class="w-9 h-9 rounded-full bg-slate-800 hover:bg-teal-600 flex items-center justify-center transition-colors">
+              <i data-lucide="facebook" class="hidden w-4 h-4 text-slate-300"></i>
+              <img src="{% static 'images/facebook.png' %}" class="rounded-full" alt="Facebook">
             </a>
-            <a href="#" class="w-9 h-9 rounded-full bg-slate-800 hover:bg-teal-600 flex items-center justify-center transition-colors">
-              <i data-lucide="instagram" class="w-4 h-4 text-slate-300"></i>
+            <a href="https://www.instagram.com/mabiniskyview/" target="_blank"  class="w-9 h-9 rounded-full bg-slate-800 hover:bg-teal-600 flex items-center justify-center transition-colors">
+              <i data-lucide="instagram" class="hidden w-4 h-4 text-slate-300"></i>
+              <img src="{% static 'images/instagram.png' %}" class="rounded-full" alt="Instagram">
             </a>
-            <a href="#" class="w-9 h-9 rounded-full bg-slate-800 hover:bg-teal-600 flex items-center justify-center transition-colors">
-              <i data-lucide="twitter" class="w-4 h-4 text-slate-300"></i>
+            <a href="https://www.tiktok.com/@mabiniskyviewresort" target="_blank" class="w-9 h-9 rounded-full bg-slate-800 hover:bg-teal-600 flex items-center justify-center transition-colors">
+              <i data-lucide="tiktok" class="hidden w-4 h-4 text-slate-300"></i>
+              <img src="{% static 'images/tiktok.png' %}" class="rounded-full" alt="TikTok">
             </a>
           </div>
         </div>
@@ -263,11 +272,11 @@
             </li>
             <li class="flex items-center gap-3">
               <i data-lucide="phone" class="w-4 h-4 text-teal-400 flex-shrink-0"></i>
-              <a href="tel:+639123456789" class="text-slate-400 hover:text-teal-400 text-sm transition-colors">+63 912 345 6789</a>
+              <a href="tel:+639771121977" class="text-slate-400 hover:text-teal-400 text-sm transition-colors">+63 977 112 1977</a>
             </li>
             <li class="flex items-center gap-3">
               <i data-lucide="mail" class="w-4 h-4 text-teal-400 flex-shrink-0"></i>
-              <a href="mailto:hello@mabiniskyview.ph" class="text-slate-400 hover:text-teal-400 text-sm transition-colors">hello@mabiniskyview.ph</a>
+              <a href="mailto:mabiniskyviewresort@yahoo.com" class="text-slate-400 hover:text-teal-400 text-sm transition-colors">mabiniskyviewresort@yahoo.com</a>
             </li>
             <li class="flex items-center gap-3">
               <i data-lucide="clock" class="w-4 h-4 text-teal-400 flex-shrink-0"></i>

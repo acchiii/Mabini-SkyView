@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block title %}Mabini SkyView — Experience Breathtaking Views in Cebu{% endblock %}
+
 
 {% block content %}
 
@@ -10,7 +11,7 @@
   <!-- Background image with overlay -->
   <div class="absolute inset-0 z-0">
     <img
-      src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&q=80"
+      src="{% static 'images/home/drone-view.jpeg' %}"
       alt="Scenic mountain view"
       class="w-full h-full object-cover"
     />
@@ -118,22 +119,22 @@
       </div>
 
       <!-- Nature Trails -->
-      <div class="card-lift group p-7 rounded-2xl bg-slate-900 border border-slate-800 hover:border-teal-500/40 transition-colors">
+      {% comment %} <div class="card-lift group p-7 rounded-2xl bg-slate-900 border border-slate-800 hover:border-teal-500/40 transition-colors">
         <div class="w-12 h-12 rounded-xl bg-teal-500/15 flex items-center justify-center mb-5 group-hover:bg-teal-500/25 transition-colors">
           <i data-lucide="trees" class="w-6 h-6 text-teal-400"></i>
         </div>
         <h3 class="font-display font-semibold text-white text-lg mb-2">Nature Trails</h3>
         <p class="text-slate-400 text-sm leading-relaxed">Guided and self-guided hiking trails through lush Cebuano forests with diverse flora and fauna.</p>
-      </div>
+      </div> {% endcomment %}
 
       <!-- Campfire Area -->
-      <div class="card-lift group p-7 rounded-2xl bg-slate-900 border border-slate-800 hover:border-teal-500/40 transition-colors">
+      {% comment %} <div class="card-lift group p-7 rounded-2xl bg-slate-900 border border-slate-800 hover:border-teal-500/40 transition-colors">
         <div class="w-12 h-12 rounded-xl bg-orange-500/15 flex items-center justify-center mb-5 group-hover:bg-orange-500/25 transition-colors">
           <i data-lucide="flame" class="w-6 h-6 text-orange-400"></i>
         </div>
         <h3 class="font-display font-semibold text-white text-lg mb-2">Campfire & Bonfire Area</h3>
         <p class="text-slate-400 text-sm leading-relaxed">Cozy open-air campfire zones perfect for group gatherings, storytelling, and stargazing under clear Cebu skies.</p>
-      </div>
+      </div> {% endcomment %}
 
       <!-- Restaurant -->
       <div class="card-lift group p-7 rounded-2xl bg-slate-900 border border-slate-800 hover:border-teal-500/40 transition-colors">
@@ -199,19 +200,19 @@
     <!-- Placeholder gallery using Unsplash -->
     <div class="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
       <div class="img-overlay rounded-xl overflow-hidden md:col-span-2 md:row-span-2 aspect-square md:aspect-auto md:h-80">
-        <img src="https://images.unsplash.com/photo-1540979388789-6cee28a1cdc9?w=800&q=80" alt="Scenic mountain view" class="w-full h-full object-cover" />
+        <img src="{% static 'images/home/captured/1.jpeg' %}" alt="Scenic mountain view" class="w-full h-full object-cover" />
       </div>
       <div class="img-overlay rounded-xl overflow-hidden aspect-square">
-        <img src="https://images.unsplash.com/photo-1501854140801-50d01698950b?w=400&q=80" alt="Mountain landscape" class="w-full h-full object-cover" />
+        <img src="{% static 'images/home/captured/2.jpeg' %}" alt="Mountain landscape" class="w-full h-full object-cover" />
       </div>
       <div class="img-overlay rounded-xl overflow-hidden aspect-square">
-        <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=400&q=80" alt="Sunset view" class="w-full h-full object-cover" />
+        <img src="{% static 'images/home/captured/3.jpeg' %}" alt="Sunset view" class="w-full h-full object-cover" />
       </div>
       <div class="img-overlay rounded-xl overflow-hidden aspect-square">
-        <img src="https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=400&q=80" alt="Nature trail" class="w-full h-full object-cover" />
+        <img src="{% static 'images/home/captured/4.jpeg' %}" alt="Nature trail" class="w-full h-full object-cover" />
       </div>
       <div class="img-overlay rounded-xl overflow-hidden aspect-square">
-        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=80" alt="Mountain peak" class="w-full h-full object-cover" />
+        <img src="{% static 'images/home/captured/5.jpeg' %}" alt="Mountain peak" class="w-full h-full object-cover" />
       </div>
     </div>
     {% endif %}
@@ -292,7 +293,7 @@
 <!-- ========== CTA BANNER ========== -->
 <section class="relative py-24 overflow-hidden">
   <div class="absolute inset-0">
-    <img src="https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=1920&q=80" alt="Night sky" class="w-full h-full object-cover" />
+    <img src="{% static 'images/home/ low.jpeg' %}" alt="Night sky" class="w-full h-full object-cover" />
     <div class="absolute inset-0 bg-slate-950/80"></div>
   </div>
   <div class="relative z-10 text-center px-4 max-w-3xl mx-auto">

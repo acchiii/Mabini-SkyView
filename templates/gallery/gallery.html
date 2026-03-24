@@ -57,7 +57,7 @@
     </div>
 
     <!-- Placeholder tiles using Unsplash -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4" id="gallery-grid">
+    {% comment %} <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4" id="gallery-grid">
       {% for item in "12345678910111213121314"|make_list %}
       <div class="img-overlay rounded-xl overflow-hidden cursor-pointer group aspect-square
           {% if forloop.counter == 1 %}sm:col-span-2 sm:row-span-2{% endif %}
@@ -80,7 +80,7 @@
         </div>
       </div>
       {% endfor %}
-    </div>
+    </div> {% endcomment %}
     {% endif %}
 
   </div>
@@ -95,7 +95,7 @@
     </div>
     <h3 class="font-display font-bold text-white text-2xl mb-4">Have Great Photos from Your Visit?</h3>
     <p class="text-slate-400 mb-8 leading-relaxed">
-      Tag us on Instagram <span class="text-teal-400 font-medium">@MabiniSkyView</span> or send your best shots to our email — we'd love to feature them here and on our social media!
+      Tag us on Instagram <span class="text-teal-400 font-medium">@mabiniskyview</span> or send your best shots to our email — we'd love to feature them here and on our social media!
     </p>
     <div class="flex flex-col sm:flex-row gap-4 justify-center">
       <a href="{% url 'contact' %}" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-teal-500 hover:bg-teal-400 text-white font-semibold text-sm transition-all duration-300">

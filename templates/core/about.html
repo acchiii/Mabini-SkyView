@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block title %}About Us — Mabini SkyView{% endblock %}
 
 {% block content %}
@@ -7,7 +7,7 @@
 <!-- Page Header -->
 <section class="relative pt-32 pb-20 overflow-hidden">
   <div class="absolute inset-0">
-    <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1920&q=80" alt="Mountain view" class="w-full h-full object-cover" />
+    <img src="{% static 'images/home/captured/1.jpeg' %}" alt="Mountain view" class="w-full h-full object-cover" />
     <div class="absolute inset-0 bg-gradient-to-b from-slate-950/80 via-slate-900/70 to-slate-950"></div>
   </div>
   <div class="relative z-10 text-center px-4">
@@ -29,14 +29,14 @@
       <div class="relative">
         <div class="grid grid-cols-2 gap-4">
           <div class="img-overlay rounded-2xl overflow-hidden aspect-[3/4]">
-            <img src="https://images.unsplash.com/photo-1501854140801-50d01698950b?w=600&q=80" alt="Mountain scenery" class="w-full h-full object-cover" />
+            <img src="{% static 'images/about/2.jpeg' %}" alt="Mountain scenery" class="w-full h-full object-cover" />
           </div>
           <div class="space-y-4 pt-8">
             <div class="img-overlay rounded-2xl overflow-hidden aspect-square">
-              <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=80" alt="Sunrise view" class="w-full h-full object-cover" />
+              <img src="{% static 'images/about/3.jpeg' %}" alt="Sunrise view" class="w-full h-full object-cover" />
             </div>
             <div class="img-overlay rounded-2xl overflow-hidden aspect-square">
-              <img src="https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=400&q=80" alt="Forest trail" class="w-full h-full object-cover" />
+              <img src="{% static 'images/about/4.jpeg' %}" alt="Forest trail" class="w-full h-full object-cover" />
             </div>
           </div>
         </div>
@@ -207,16 +207,8 @@
 
       <!-- Map embed -->
       <div class="rounded-2xl overflow-hidden border border-slate-700 shadow-2xl">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d62629.04895887397!2d123.8318!3d10.3157!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33a999258cfa2c79%3A0x7aad9f4cb5a5def2!2sCebu%20City%2C%20Cebu%2C%20Philippines!5e0!3m2!1sen!2sph!4v1234567890"
-          width="100%"
-          height="380"
-          style="border:0;"
-          allowfullscreen=""
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-          title="Mabini, Cebu City Location">
-        </iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3841.7647404655186!2d123.91785661049505!3d10.460844289626282!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33a9a582c6116e57%3A0x138925ee87aaaf5f!2sMabini%20Sky%20View%20Resort!5e1!3m2!1sen!2sph!4v1774348604221!5m2!1sen!2sph"
+         width="100%" height="380" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </div>
   </div>
