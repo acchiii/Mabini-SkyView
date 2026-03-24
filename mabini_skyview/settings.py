@@ -9,7 +9,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-mabini-skyview-secret-key-change-in-production-2024'
 
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*'] # '192.168.137.1', 'localhost', '127.0.0.1'
 
@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     'packages',
     'tailwind',
     'theme',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
