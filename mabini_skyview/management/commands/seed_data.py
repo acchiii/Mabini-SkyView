@@ -1,18 +1,15 @@
-"""
-Run this script to populate the database with sample data.
-Usage: python manage.py shell < seed_data.py
-  OR:  python manage.py runscript seed_data   (with django-extensions)
-"""
+# python manage.py seed_data
 
-import django
-import os
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'mabini_skyview.settings')
-django.setup()
 
+from django.core.management.base import BaseCommand
 from packages.models import Package
 from django.contrib.auth.models import User
 
-print("Seeding Mabini SkyView database...")
+class Command(BaseCommand):
+    help = 'Seed database with initial data for Mabini SkyView'
+
+    def handle(self, *args, **kwargs):
+        self.stdout.write("Seeding Mabini SkyView database...")
 
 # ── Packages ──────────────────────────────────────────────────────────────────
 packages_data = [
