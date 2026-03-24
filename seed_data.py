@@ -26,7 +26,7 @@ packages_data = [
 for data in packages_data:
     pkg, created = Package.objects.get_or_create(name=data["name"], defaults=data)
     status = "Created" if created else "Already exists"
-    print(f"{status}: {pkg.name} (₱{pkg['price']})")
+    print(f"{status}: {pkg.name} (₱{pkg.price})")
 
 # Create superuser if it doesn’t exist
 if not User.objects.filter(username="admin").exists():
