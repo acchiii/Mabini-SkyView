@@ -13,9 +13,9 @@ urlpatterns = [
     path('gallery/', include('gallery.urls')),
     path('packages/', include('packages.urls')),
 ]
-if settings.DEBUG:
+if True:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
+    
 handler404 = custom_404
 handler500 = custom_500
 handler403 = custom_403
