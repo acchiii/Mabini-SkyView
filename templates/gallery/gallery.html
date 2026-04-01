@@ -26,7 +26,7 @@
     <!-- Dynamic gallery from database -->
     <div class="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-4 space-y-4" id="gallery-grid">
       {% for img in images %}
-        <div data-scroll-animate data-delay="{{ forloop.counter0|floatformat:1 }}s" class="break-inside-avoid img-overlay rounded-xl overflow-hidden cursor-pointer group opacity-0 translate-y-6
+        <div data-scroll-animate data-delay="{{ forloop.counter0|floatformat:0.1 }}s" class="break-inside-avoid img-overlay rounded-xl overflow-hidden cursor-pointer group opacity-0 translate-y-6
            onclick="openLightbox('{{ img.image.url }}', '{{ img.caption }}', {{ forloop.counter0 }})">
         <img
           src="{{ img.image.url }}"
