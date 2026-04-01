@@ -198,7 +198,7 @@
     </div>
     {% else %}
     <!-- Placeholder gallery using Unsplash -->
-    <div class="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
+    {% comment %} <div class="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
       <div class="img-overlay rounded-xl overflow-hidden md:col-span-2 md:row-span-2 aspect-square md:aspect-auto md:h-80">
         <img src="{% static 'images/home/captured/1.jpeg' %}" alt="Scenic mountain view" class="w-full h-full object-cover" />
       </div>
@@ -214,7 +214,7 @@
       <div class="img-overlay rounded-xl overflow-hidden aspect-square">
         <img src="{% static 'images/home/captured/5.jpeg' %}" alt="Mountain peak" class="w-full h-full object-cover" />
       </div>
-    </div>
+    </div> {% endcomment %}
     {% endif %}
 
   </div>

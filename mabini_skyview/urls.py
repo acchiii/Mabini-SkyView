@@ -12,8 +12,9 @@ urlpatterns = [
     path('bookings/', include('bookings.urls')),
     path('gallery/', include('gallery.urls')),
     path('packages/', include('packages.urls')),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
+]
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 handler404 = custom_404
 handler500 = custom_500

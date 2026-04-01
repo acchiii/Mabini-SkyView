@@ -1,5 +1,5 @@
 {% load static %}
-
+{% load tailwind_tags %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,8 +9,8 @@
   <link rel="shortcut icon" href="{% static 'images/fav.jpg' %}" type="image/x-icon">
   <meta name="description" content="Experience breathtaking views at Mabini SkyView, a premier scenic tourist destination in Mabini, Cebu City, Philippines." />
 
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
+
+  {% tailwind_css %}
 
   <!-- Google Fonts: Playfair Display + DM Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -19,45 +19,6 @@
 
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
-
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            sky: {
-              950: '#0a1628',
-            },
-            teal: {
-              450: '#2dd4bf',
-            },
-            gold: {
-              400: '#f5c842',
-              500: '#e6b800',
-            },
-          },
-          fontFamily: {
-            display: ['"Playfair Display"', 'Georgia', 'serif'],
-            body: ['"DM Sans"', 'system-ui', 'sans-serif'],
-          },
-          animation: {
-            'fade-up': 'fadeUp 0.6s ease-out both',
-            'fade-in': 'fadeIn 0.8s ease-out both',
-          },
-          keyframes: {
-            fadeUp: {
-              '0%': { opacity: '0', transform: 'translateY(24px)' },
-              '100%': { opacity: '1', transform: 'translateY(0)' },
-            },
-            fadeIn: {
-              '0%': { opacity: '0' },
-              '100%': { opacity: '1' },
-            },
-          },
-        },
-      },
-    }
-  </script>
 
   <style>
     body { font-family: 'DM Sans', system-ui, sans-serif; }
@@ -98,6 +59,13 @@
     .card-lift {
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
+
+    /* Scroll animation initial states */
+    [data-scroll-animate] {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
     .card-lift:hover {
       transform: translateY(-6px);
       box-shadow: 0 20px 40px rgba(0,0,0,0.35);
@@ -133,6 +101,27 @@
   </style>
 
   {% block extra_head %}{% endblock %}
+
+  <style>
+    .animate-fade-up {
+      animation: fadeUp 0.6s ease-out both;
+    }
+    .animate-fade-in {
+      animation: fadeIn 0.8s ease-out both;
+    }
+    @keyframes fadeUp {
+      0% { opacity: 0; transform: translateY(24px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+    .delay-100 { animation-delay: 0.1s; }
+    .delay-200 { animation-delay: 0.2s; }
+    .delay-300 { animation-delay: 0.3s; }
+    .delay-400 { animation-delay: 0.4s; }
+  </style>
 </head>
 
 <body class="bg-slate-950 text-slate-100 font-body antialiased">
@@ -296,6 +285,35 @@
   </footer>
 
   <script>
+    // Scroll-triggered animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '-10% 0px -20% 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const el = entry.target;
+        if (entry.isIntersecting) {
+          el.classList.remove('opacity-0', 'translate-y-6');
+          el.classList.add('animate-fade-up', 'opacity-100');
+          const delay = el.dataset.delay || '0s';
+          el.style.animationDelay = delay;
+        } else {
+          el.classList.remove('animate-fade-up', 'opacity-100');
+          el.classList.add('opacity-0', 'translate-y-6');
+          el.style.animationDelay = '0s';
+        }
+      });
+    }, observerOptions);
+
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('[data-scroll-animate]').forEach(el => {
+        el.classList.add('opacity-0', 'translate-y-6'); // Initial hidden state
+        observer.observe(el);
+      });
+    });
+
     // Initialize Lucide icons
     lucide.createIcons();
 

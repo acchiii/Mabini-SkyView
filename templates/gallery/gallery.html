@@ -5,7 +5,7 @@
 {% block content %}
 
 <!-- Page Header -->
-<section class="relative pt-36 pb-20 overflow-hidden">
+<section class="relative pt-36 pb-20 overflow-hidden animate-fade-up">
   <div class="absolute inset-0 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950"></div>
   <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(20,184,166,0.10),transparent_55%)]"></div>
   <div class="relative z-10 text-center px-4">
@@ -19,14 +19,14 @@
 
 
 <!-- Gallery Grid -->
-<section class="py-16 bg-slate-950">
+<section class="py-16 bg-slate-950 animate-fade-in">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
     {% if images %}
     <!-- Dynamic gallery from database -->
     <div class="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-4 space-y-4" id="gallery-grid">
       {% for img in images %}
-      <div class="break-inside-avoid img-overlay rounded-xl overflow-hidden cursor-pointer group"
+        <div data-scroll-animate data-delay="{{ forloop.counter0|floatformat:1 }}s" class="break-inside-avoid img-overlay rounded-xl overflow-hidden cursor-pointer group opacity-0 translate-y-6
            onclick="openLightbox('{{ img.image.url }}', '{{ img.caption }}', {{ forloop.counter0 }})">
         <img
           src="{{ img.image.url }}"
@@ -52,7 +52,7 @@
     <div class="mb-8">
       <div class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-teal-500/10 border border-teal-500/20 text-teal-400 text-xs">
         <i data-lucide="info" class="w-3.5 h-3.5"></i>
-        No photos uploaded yet. Add images via the Admin panel to display them here.
+        No photos uploaded yet.
       </div>
     </div>
 
