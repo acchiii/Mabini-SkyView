@@ -26,13 +26,18 @@
     <!-- Dynamic gallery from database -->
     <div class="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-4 space-y-4" id="gallery-grid">
       {% for img in images %}
-        <div data-scroll-animate data-delay="{{ forloop.counter0|floatformat:0.1 }}s" class="break-inside-avoid img-overlay rounded-xl overflow-hidden cursor-pointer group opacity-0 translate-y-6
-           onclick="openLightbox('{{ img.image.url }}', '{{ img.caption }}', {{ forloop.counter0 }})">
+        <div class="break-inside-avoid img-overlay rounded-xl overflow-hidden cursor-pointer group"
+           data-full-src="{{ img.full.url }}"
+           data-caption="{{ img.caption }}"
+           data-index="{{ forloop.counter0 }}"
+           onclick="openLightbox({{ forloop.counter0 }})">
         <img
-          src="{{ img.image.url }}"
+          src="{{ img.medium.url }}"
+          srcset="{{ img.thumbnail.url }} 400w, {{ img.medium.url }} 800w, {{ img.full.url }} 1200w"
+          sizes="(min-width: 1536px) 25vw, (min-width: 1280px) 25vw, (min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
           alt="{{ img.caption }}"
           class="w-full object-cover"
-          loading="lazy"
+          loading="{% if forloop.counter0|add:1 <= 4 %}eager{% else %}lazy{% endif %}"
         />
         <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-end p-4">
           <div>
@@ -119,10 +124,10 @@
   </button>
 
   <!-- Navigation -->
-  <button id="prev-btn" onclick="navigateLightbox(-1)" class="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-slate-800/80 hover:bg-slate-700 flex items-center justify-center text-slate-300 hover:text-white transition-colors">
+  <button id="prev-btn" class="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-slate-800/80 hover:bg-slate-700 flex items-center justify-center text-slate-300 hover:text-white transition-colors">
     <i data-lucide="chevron-left" class="w-6 h-6"></i>
   </button>
-  <button id="next-btn" onclick="navigateLightbox(1)" class="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-slate-800/80 hover:bg-slate-700 flex items-center justify-center text-slate-300 hover:text-white transition-colors">
+  <button id="next-btn" class="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-slate-800/80 hover:bg-slate-700 flex items-center justify-center text-slate-300 hover:text-white transition-colors">
     <i data-lucide="chevron-right" class="w-6 h-6"></i>
   </button>
 
@@ -140,71 +145,66 @@
 
 {% block extra_scripts %}
 <script>
-  lucide.createIcons();
+  // Gallery lightbox - fixed full quality + navigation
+  document.addEventListener('DOMContentLoaded', function() {
+    // Collect all gallery items with full quality URLs
+    const galleryItems = [];
+    document.querySelectorAll('#gallery-grid [data-index]').forEach(el => {
+      const index = parseInt(el.dataset.index);
+      galleryItems[index] = {
+        src: el.dataset.fullSrc,
+        caption: el.dataset.caption
+      };
+    });
 
-  // Collect all gallery images for navigation
-  const galleryItems = [];
-  document.querySelectorAll('#gallery-grid [onclick]').forEach((el, i) => {
-    const img = el.querySelector('img');
-    const caption = el.querySelector('.text-white') ? el.querySelector('.text-white').textContent.trim() : '';
-    if (img) galleryItems.push({ src: img.src, caption });
-  });
+    let currentIndex = 0;
 
-  let currentIndex = 0;
-
-  function openLightbox(src, caption, index) {
-    currentIndex = index;
-    document.getElementById('lightbox-img').src = src;
-    document.getElementById('lightbox-caption').textContent = caption;
-    document.getElementById('lightbox-counter').textContent = `${index + 1} / ${galleryItems.length}`;
-    showLightbox();
-  }
-
-  function openLightboxStatic(el) {
-    const img = el.querySelector('img');
-    const captionEl = el.querySelector('.text-white');
-    const index = Array.from(document.querySelectorAll('#gallery-grid [onclick]')).indexOf(el);
-    currentIndex = index;
-    document.getElementById('lightbox-img').src = img.src;
-    document.getElementById('lightbox-caption').textContent = captionEl ? captionEl.textContent.trim() : '';
-    document.getElementById('lightbox-counter').textContent = `${index + 1} / ${galleryItems.length}`;
-    showLightbox();
-  }
-
-  function showLightbox() {
-    const lb = document.getElementById('lightbox');
-    lb.classList.remove('hidden');
-    lb.classList.add('flex');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeLightbox() {
-    const lb = document.getElementById('lightbox');
-    lb.classList.add('hidden');
-    lb.classList.remove('flex');
-    document.body.style.overflow = '';
-  }
-
-  function navigateLightbox(direction) {
-    currentIndex = (currentIndex + direction + galleryItems.length) % galleryItems.length;
-    const item = galleryItems[currentIndex];
-    if (item) {
+    function openLightbox(index) {
+      const item = galleryItems[index];
+      if (!item) return;
+      
+      currentIndex = index;
       document.getElementById('lightbox-img').src = item.src;
       document.getElementById('lightbox-caption').textContent = item.caption;
-      document.getElementById('lightbox-counter').textContent = `${currentIndex + 1} / ${galleryItems.length}`;
+      document.getElementById('lightbox-counter').textContent = `${index + 1} / ${galleryItems.length}`;
+      
+      const lb = document.getElementById('lightbox');
+      lb.classList.remove('hidden');
+      lb.classList.add('flex');
+      document.body.style.overflow = 'hidden';
     }
-  }
 
-  // Close on backdrop click
-  document.getElementById('lightbox').addEventListener('click', function(e) {
-    if (e.target === this) closeLightbox();
-  });
+    window.openLightbox = openLightbox;  // Global for onclick
 
-  // Keyboard navigation
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') closeLightbox();
-    if (e.key === 'ArrowLeft') navigateLightbox(-1);
-    if (e.key === 'ArrowRight') navigateLightbox(1);
+    function closeLightbox() {
+      const lb = document.getElementById('lightbox');
+      lb.classList.add('hidden');
+      lb.classList.remove('flex');
+      document.body.style.overflow = '';
+    }
+
+    window.closeLightbox = closeLightbox;
+
+    function navigateLightbox(direction) {
+      const newIndex = (currentIndex + direction + galleryItems.length) % galleryItems.length;
+      openLightbox(newIndex);
+    }
+
+    // Event listeners
+    document.getElementById('lightbox').addEventListener('click', function(e) {
+      if (e.target === this) closeLightbox();
+    });
+
+    document.getElementById('prev-btn').onclick = () => navigateLightbox(-1);
+    document.getElementById('next-btn').onclick = () => navigateLightbox(1);
+
+    document.addEventListener('keydown', function(e) {
+      if (document.getElementById('lightbox').classList.contains('flex')) {
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowLeft') navigateLightbox(-1);
+        if (e.key === 'ArrowRight') navigateLightbox(1);
+      }
+    });
   });
 </script>
 {% endblock %}
